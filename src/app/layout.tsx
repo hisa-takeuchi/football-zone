@@ -1,7 +1,9 @@
-import { Inter } from 'next/font/google'
-import type { Metadata } from 'next'
-import './globals.css'
 import { colorModeManager, ColorModeScript, UIProvider } from '@yamada-ui/react'
+import { Inter } from 'next/font/google'
+
+import type { Metadata } from 'next'
+
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 

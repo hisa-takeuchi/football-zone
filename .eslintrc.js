@@ -3,8 +3,8 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'next/core-web-vitals',
-    'prettier',
-    'plugin:tailwindcss/recommended'
+    'plugin:tailwindcss/recommended',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -17,6 +17,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call': 'error',
     '@typescript-eslint/no-unsafe-member-access': 'error',
     '@typescript-eslint/no-unsafe-return': 'error',
+    'unused-imports/no-unused-imports-ts': 'warn',
     'import/order': [
       'error',
       {
@@ -26,13 +27,20 @@ module.exports = {
             pattern: '{react,react-dom/**,react-router-dom}',
             group: 'builtin',
             position: 'before'
+          },
+          {
+            pattern: '@src/**',
+            group: 'parent',
+            position: 'before'
           }
         ],
         pathGroupsExcludedImportTypes: ['builtin'],
         alphabetize: {
           order: 'asc'
-        }
+        },
+        'newlines-between': 'always'
       }
-    ]
+    ],
+    '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }]
   }
 }
