@@ -10,14 +10,18 @@ export const Competitions: FC = () => {
 
   const competitions = data?.data.competitions
 
-  console.log(competitions)
-
   return (
-    <Stack>
+    <Stack direction={{ base: 'row', lg: 'column' }} w="full">
       {isLoading ? (
         <Loading size="lg" />
       ) : (
-        <>{competitions?.map((competition) => <Competition key={competition.id} {...competition} />)}</>
+        <>
+          {competitions?.map((competition) => (
+            <Stack w={{ base: 'full', lg: '50%' }} key={competition.id}>
+              <Competition {...competition} />
+            </Stack>
+          ))}
+        </>
       )}
     </Stack>
   )

@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Box, Button, Heading, HStack, Image, Stack, Text, VStack } from '@yamada-ui/react'
+import { Box, Heading, HStack, Image, Stack, VStack } from '@yamada-ui/react'
 
 import { Standings } from '@/features/competitions/components/Standings/Standings'
 
@@ -19,10 +19,8 @@ export const Competition: FC<CompetitionType> = (props) => {
         </Box>
       </HStack>
       <VStack>
-        <Text>順位</Text>
         <Standings competitionCode={code} />
       </VStack>
-      <Button>リーグ情報をもっと見る</Button>
     </Stack>
   )
 }
