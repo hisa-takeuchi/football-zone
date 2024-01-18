@@ -1,28 +1,22 @@
 import type { FC } from 'react'
 
-import { Loading, Stack } from '@yamada-ui/react'
+import { GridItem, SimpleGrid } from '@yamada-ui/react'
 
-import { GetCompetitions } from '@/features/competitions/api/getCompetitions'
+import { Const } from '@/const/constant'
 import { Competition } from '@/features/competitions/components/Competition/Competition'
 
 export const Competitions: FC = () => {
-  const { data, isLoading } = GetCompetitions()
-
-  const competitions = data?.data.competitions
+  const competitionNameList: readonly string[] = Const.LEAGUE_LIST
 
   return (
-    <Stack direction={{ base: 'row', lg: 'column' }} w="full">
-      {isLoading ? (
-        <Loading size="lg" />
-      ) : (
-        <>
-          {competitions?.map((competition) => (
-            <Stack w={{ base: 'full', lg: '50%' }} key={competition.id}>
-              <Competition {...competition} />
-            </Stack>
-          ))}
-        </>
-      )}
-    </Stack>
+    <SimpleGrid w="full" columns={{ base: 2, md: 1 }} gap="xl">
+      <>
+        {competitionNameList?.map((name) => (
+          <GridItem w="full" key={name}>
+            <Competition name={name} />
+          </GridItem>
+        ))}
+      </>
+    </SimpleGrid>
   )
 }

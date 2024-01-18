@@ -2,20 +2,15 @@ import type { FC } from 'react'
 import React, { useMemo } from 'react'
 
 import { HStack, Image, Stack, Text } from '@yamada-ui/react'
-import type { Column } from '@yamada-ui/table'
 import { Table } from '@yamada-ui/table'
 
-import { GetStandings } from '@/features/competitions/api/getStandings'
+import type { Column } from '@yamada-ui/table'
 
 interface Props {
-  competitionCode: string
+  standingsTable: StandingTableType[]
 }
 
-export const Standings: FC<Props> = ({ competitionCode }) => {
-  const { data } = GetStandings(competitionCode)
-
-  const standingsTable = data?.data.standings[0].table
-
+export const Standings: FC<Props> = ({ standingsTable }) => {
   const top5TData = useMemo(() => standingsTable?.slice(0, 5), [standingsTable])
 
   const columns = useMemo<Column<StandingTableType>[]>(
