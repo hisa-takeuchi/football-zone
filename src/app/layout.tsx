@@ -1,5 +1,7 @@
-import { colorModeManager, ColorModeScript, UIProvider } from '@yamada-ui/react'
+import { colorModeManager, ColorModeScript, Container, UIProvider } from '@yamada-ui/react'
 import { Inter } from 'next/font/google'
+
+import { Header } from '@/components/layouts/Header/Header'
 
 import type { Metadata } from 'next'
 
@@ -17,7 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <ColorModeScript type="cookie" nonce="testing" />
-        <UIProvider colorModeManager={{ ...colorModeManager }.cookieStorage}>{children}</UIProvider>
+        <UIProvider colorModeManager={{ ...colorModeManager }.cookieStorage}>
+          <Header />
+          <Container as="main">{children}</Container>
+        </UIProvider>
       </body>
     </html>
   )

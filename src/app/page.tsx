@@ -1,9 +1,14 @@
-import { Button } from '@yamada-ui/react'
+'use client'
+import { Stack } from '@yamada-ui/react'
+
+import { Competitions } from '@/features/competitions/components/Competitions/Competitions'
+import { SearchBox } from '@/features/search/components/SearchBox/SearchBox'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button>ボタン</Button>
-    </main>
+    <Stack gap="2xl">
+      <SearchBox />
+      <Competitions />
+    </Stack>
   )
 }
