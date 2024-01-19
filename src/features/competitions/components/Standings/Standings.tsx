@@ -7,12 +7,10 @@ import { Table } from '@yamada-ui/table'
 import type { Column } from '@yamada-ui/table'
 
 interface Props {
-  standingsTable: StandingTableType[]
+  tableData?: StandingTableType[]
 }
 
-export const Standings: FC<Props> = ({ standingsTable }) => {
-  const top5TData = useMemo(() => standingsTable?.slice(0, 5), [standingsTable])
-
+export const Standings: FC<Props> = ({ tableData }) => {
   const columns = useMemo<Column<StandingTableType>[]>(
     () => [
       {
@@ -58,8 +56,8 @@ export const Standings: FC<Props> = ({ standingsTable }) => {
 
   return (
     <Stack>
-      {top5TData ? (
-        <Table columns={columns} data={top5TData} enableRowSelection={false} />
+      {tableData ? (
+        <Table columns={columns} data={tableData} enableRowSelection={false} />
       ) : (
         <Text>データがありません</Text>
       )}
