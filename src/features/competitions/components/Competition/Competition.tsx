@@ -1,7 +1,20 @@
 import type { FC } from 'react'
 import { useMemo } from 'react'
 
-import { Box, Heading, HStack, Image, Skeleton, SkeletonCircle, SkeletonText, Stack, VStack } from '@yamada-ui/react'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Icon as FontAwesomeIcon } from '@yamada-ui/fontawesome'
+import {
+  Box,
+  Heading,
+  HStack,
+  Image,
+  Link,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  Stack,
+  VStack
+} from '@yamada-ui/react'
 
 import { useStandings } from '@/features/competitions/api/useStandings'
 import { Standings } from '@/features/competitions/components/Standings/Standings'
@@ -24,11 +37,14 @@ export const Competition: FC<{ name: string }> = ({ name }) => {
           </Box>
         </SkeletonCircle>
         <SkeletonText isLoaded={!isLoading} lineClamp={1} textHeight={6}>
-          <Box>
-            <Heading as="h3" size="md">
-              {competition?.name}
-            </Heading>
-          </Box>
+          <Link color="base">
+            <HStack>
+              <Heading as="h3" size="md">
+                {competition?.name}
+              </Heading>
+              <FontAwesomeIcon color="link" icon={faChevronRight} />
+            </HStack>
+          </Link>
         </SkeletonText>
       </HStack>
 
